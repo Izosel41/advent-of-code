@@ -1,3 +1,6 @@
+package aoc;
+
+import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -13,8 +16,8 @@ class D11Test {
 
     D11 d;
 
-    List<Monkey> puzzleTest;
-    List<Monkey> puzzle;
+    List<D11.Monkey> puzzleTest;
+    List<D11.Monkey> puzzle;
 
     @BeforeEach
     void init() throws Exception {
@@ -22,7 +25,7 @@ class D11Test {
 
         initPuzzleTest();
         puzzle = new ArrayList<>();
-        Monkey m0 = new Monkey();
+        D11.Monkey m0 = new D11.Monkey();
         m0.setItems(new LinkedList());
         m0.getItems().add(83L);
         m0.getItems().add(88L);
@@ -36,7 +39,7 @@ class D11Test {
         m0.setTest((x) -> x % 11 == 0 ? 2 : 3);
         puzzle.add(m0);
 
-        Monkey m1 = new Monkey();
+        D11.Monkey m1 = new D11.Monkey();
         m1.setItems(new LinkedList());
         m1.getItems().add(59L);
         m1.getItems().add(63l);
@@ -49,7 +52,7 @@ class D11Test {
         m1.setTest((x) -> x % 5 == 0 ? 4 : 0);
         puzzle.add(m1);
 
-        Monkey m2 = new Monkey();
+        D11.Monkey m2 = new D11.Monkey();
         m2.setItems(new LinkedList());
         m2.getItems().add(90l);
         m2.getItems().add(79l);
@@ -63,7 +66,7 @@ class D11Test {
         m2.setTest((x) -> x % 19 == 0 ? 5 : 6);
         puzzle.add(m2);
 
-        Monkey m3 = new Monkey();
+        D11.Monkey m3 = new D11.Monkey();
         m3.setItems(new LinkedList());
         m3.getItems().add(97l);
         m3.getItems().add(55l);
@@ -73,7 +76,7 @@ class D11Test {
         m3.setTest((x) -> x % 13 == 0 ? 2 : 6);
         puzzle.add(m3);
 
-        Monkey m4 = new Monkey();
+        D11.Monkey m4 = new D11.Monkey();
         m4.setItems(new LinkedList());
         m4.getItems().add(74l);
         m4.getItems().add(54l);
@@ -84,7 +87,7 @@ class D11Test {
         m4.setTest((x) -> x % 7 == 0 ? 0 : 3);
         puzzle.add(m4);
 
-        Monkey m5 = new Monkey();
+        D11.Monkey m5 = new D11.Monkey();
         m5.setItems(new LinkedList());
         m5.getItems().add(58l);
 
@@ -92,7 +95,7 @@ class D11Test {
         m5.setTest((x) -> x % 17 == 0 ? 7 : 1);
         puzzle.add(m5);
 
-        Monkey m6 = new Monkey();
+        D11.Monkey m6 = new D11.Monkey();
         m6.setItems(new LinkedList());
         m6.getItems().add(66l);
         m6.getItems().add(63l);
@@ -100,7 +103,7 @@ class D11Test {
         m6.setTest((x) -> x % 2 == 0 ? 7 : 5);
         puzzle.add(m6);
 
-        Monkey m7 = new Monkey();
+        D11.Monkey m7 = new D11.Monkey();
         m7.setItems(new LinkedList());
         m7.getItems().add(56l);
         m7.getItems().add(56l);
@@ -115,7 +118,7 @@ class D11Test {
 
     private void initPuzzleTest() {
         puzzleTest = new ArrayList<>();
-        Monkey m0 = new Monkey();
+        D11.Monkey m0 = new D11.Monkey();
         m0.setItems(new LinkedList<>());
         m0.getItems().add(79L);
         m0.getItems().add(98L);
@@ -123,7 +126,7 @@ class D11Test {
         m0.setTest((x) -> x % 23 == 0 ? 2 : 3);
         puzzleTest.add(m0);
 
-        Monkey m1 = new Monkey();
+        D11.Monkey m1 = new D11.Monkey();
         m1.setItems(new LinkedList());
         m1.getItems().add(54L);
         m1.getItems().add(65L);
@@ -133,7 +136,7 @@ class D11Test {
         m1.setTest((x) -> x % 19 == 0 ? 2 : 0);
         puzzleTest.add(m1);
 
-        Monkey m2 = new Monkey();
+        D11.Monkey m2 = new D11.Monkey();
         m2.setItems(new LinkedList());
         m2.getItems().add(79L);
         m2.getItems().add(60L);
@@ -142,7 +145,7 @@ class D11Test {
         m2.setTest((x) -> x % 13 == 0 ? 1 : 3);
         puzzleTest.add(m2);
 
-        Monkey m3 = new Monkey();
+        D11.Monkey m3 = new D11.Monkey();
         m3.setItems(new LinkedList());
         m3.getItems().add(74L);
         m3.setOp((x) -> x + 3);
@@ -153,7 +156,7 @@ class D11Test {
     @Test
     void oneTest() throws Exception {
 
-        assertThat(d.one(puzzleTest, 20), is(10605));
+        MatcherAssert.assertThat(d.one(puzzleTest, 20), is(10605));
     }
 
     @Test
@@ -166,7 +169,7 @@ class D11Test {
     @Test
     void twoTest() throws Exception {
         int gcd = 23 * 19 * 13 * 17;
-        assertThat(d.two(puzzleTest, 10000, gcd), is(2713310158L));
+        MatcherAssert.assertThat(d.two(puzzleTest, 10000, gcd), is(2713310158L));
     }
 
     @Test

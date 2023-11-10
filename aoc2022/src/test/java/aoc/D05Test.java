@@ -1,3 +1,6 @@
+package aoc;
+
+import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -26,7 +29,7 @@ class D05Test {
     @Test
     void move() throws Exception {
         List<String> puzzles = Files.readAllLines(test.toPath());
-        assertThat(d.move(puzzles), is("CMZ"));
+        MatcherAssert.assertThat(d.move(puzzles), is("CMZ"));
     }
 
     @Test
@@ -39,7 +42,7 @@ class D05Test {
     @Test
     void move1() throws Exception {
         List<String> puzzles = Files.readAllLines(test.toPath());
-        assertThat(d.move1(puzzles), is("MCD"));
+        MatcherAssert.assertThat(d.move1(puzzles), is("MCD"));
     }
 
     @Test

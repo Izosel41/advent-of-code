@@ -1,3 +1,5 @@
+package aoc;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -24,7 +26,7 @@ class D09 {
                 pull(head, tail, true);
             }
         }
-       // debugPos();
+        // debugPos();
         // +1 for 0;0
         return pos.size() + 1;
     }
@@ -255,28 +257,30 @@ class D09 {
             case "R":
                 xHead++;
                 break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + cmd);
         }
         head.x = xHead;
         head.y = yHead;
         return head;
     }
-}
-class Knob {
-    int x;
-    int y;
 
-    @Override
-    public String toString() {
-        return "Knob{" +
-                "x=" + x +
-                ", y=" + y +
-                '}';
+    static class Knob {
+        int x;
+        int y;
+
+        @Override
+        public String toString() {
+            return "aoc.D09.Knob{" +
+                    "x=" + x +
+                    ", y=" + y +
+                    '}';
+        }
+
+        public Knob(int x, int y) {
+            this.x = x;
+            this.y = y;
+
+        }
     }
-
-    public Knob(int x, int y) {
-        this.x = x;
-        this.y = y;
-
-    }
 }
-

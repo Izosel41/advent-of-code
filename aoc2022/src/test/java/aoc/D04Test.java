@@ -1,3 +1,6 @@
+package aoc;
+
+import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -10,42 +13,42 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 
-class D03Test {
+class D04Test {
 
-    D03 d;
+    D04 d;
     private File test;
     private File puzzle;
 
     @BeforeEach
     void init() throws URISyntaxException {
-        d = new D03();
-        test = new File(this.getClass().getClassLoader().getResource("D03Test.txt").toURI());
-        puzzle = new File(this.getClass().getClassLoader().getResource("D03.txt").toURI());
+        d = new D04();
+        test = new File(this.getClass().getClassLoader().getResource("D04Test.txt").toURI());
+        puzzle = new File(this.getClass().getClassLoader().getResource("D04.txt").toURI());
     }
 
     @Test
-    void rucksack() throws Exception {
+    void contains() throws Exception {
         List<String> cals = Files.readAllLines(test.toPath());
-        assertThat(d.rucksack(cals), is(157));
+        MatcherAssert.assertThat(d.contains(cals), is(2));
     }
 
     @Test
     void one() throws Exception {
         List<String> cals = Files.readAllLines(puzzle.toPath());
-        System.out.println(d.rucksack(cals));
+        System.out.println(d.contains(cals));
 
     }
 
     @Test
-    void byThree() throws Exception {
+    void overlap() throws Exception {
         List<String> cals = Files.readAllLines(test.toPath());
-        assertThat(d.byThree(cals), is(70));
+        MatcherAssert.assertThat(d.overlap(cals), is(4));
     }
 
     @Test
     void two() throws Exception {
         List<String> cals = Files.readAllLines(puzzle.toPath());
-        System.out.println(d.byThree(cals));
+        System.out.println(d.overlap(cals));
 
     }
 }

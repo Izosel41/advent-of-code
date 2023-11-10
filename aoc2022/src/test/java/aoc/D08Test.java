@@ -1,3 +1,6 @@
+package aoc;
+
+import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -28,7 +31,7 @@ class D08Test {
     @Test
     void oneTest() throws Exception {
 
-        assertThat(d.one(puzzleTest), is(21));
+        MatcherAssert.assertThat(d.one(puzzleTest), is(21));
     }
 
     @Test
@@ -38,7 +41,7 @@ class D08Test {
 
     @Test
     void twoTest() throws Exception {
-        assertThat(d.two(puzzleTest), is(8));
+        MatcherAssert.assertThat(d.two(puzzleTest), is(8));
     }
 
     @Test

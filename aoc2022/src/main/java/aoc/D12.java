@@ -1,8 +1,9 @@
+package aoc;
+
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 class D12 {
 
@@ -89,7 +90,7 @@ class D12 {
 //            debug(matrix, closedList, rowLength, lineLength);
 
             if (current.x == exit.x && current.y == exit.y) {
-               debug(matrix, closedList, rowLength, lineLength);
+                debug(matrix, closedList, rowLength, lineLength);
                 return current;
             }
 
@@ -110,8 +111,8 @@ class D12 {
 
             for (Node n : neighbors) {
                 int newCost = current.cost + 1;
-                if (!( closedList.contains(n) ||
-                        openList.stream().filter(o -> o.x == n.x && o.y == n.y && newCost < n.cost).findAny().isPresent()
+                if (!(closedList.contains(n) ||
+                        openList.stream().anyMatch(o -> o.x == n.x && o.y == n.y && newCost < n.cost)
                 )) {
                     n.cost = newCost;
                     n.heuristic = newCost + calcDist(n, exit);
@@ -152,42 +153,43 @@ class D12 {
         starts.add(start);
 
         List<Node> paths = new ArrayList<>();
-        for(Node n : starts){
+        for (Node n : starts) {
             matrix = build(puzzle);
             //smell
             findExit(matrix);
             n.cost = 0;
-            matrix[n.x][n.y]=n;
+            matrix[n.x][n.y] = n;
             try {
                 paths.add(findPath(matrix, n, exit));
-            }catch (IllegalStateException e){
+            } catch (IllegalStateException e) {
                 System.out.println("no route here");
             }
         }
         return paths.stream().mapToInt(Node::getCost).min().orElse(0);
 
     }
-}
 
-@Data
-class Node implements Comparable<Node> {
-    int x;
-    int y;
-    char level;
-    int cost;
-    int heuristic;
+    @Data
+    static
+    class Node implements Comparable<Node> {
+        int x;
+        int y;
+        char level;
+        int cost;
+        int heuristic;
 
 
-    public Node(int x, int y, char level, int cost, int heuristic) {
-        this.x = x;
-        this.y = y;
-        this.level = level;
-        this.heuristic = heuristic;
-        this.cost = cost;
-    }
+        public Node(int x, int y, char level, int cost, int heuristic) {
+            this.x = x;
+            this.y = y;
+            this.level = level;
+            this.heuristic = heuristic;
+            this.cost = cost;
+        }
 
-    @Override
-    public int compareTo(Node n1) {
-        return Integer.compare(this.heuristic, n1.heuristic);
+        @Override
+        public int compareTo(Node n1) {
+            return Integer.compare(this.heuristic, n1.heuristic);
+        }
     }
 }

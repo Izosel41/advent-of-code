@@ -1,6 +1,11 @@
+package aoc;
+
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static java.lang.Integer.*;
 
 class D05 {
 
@@ -11,11 +16,13 @@ class D05 {
         for (String puzzle : puzzles) {
             if (puzzle.startsWith("m")) {
                 String[] cmd = puzzle.split(" ");
-                int quantity = Integer.valueOf(cmd[1]);
-                int from = Integer.valueOf(cmd[3]) - 1;
-                int to = Integer.valueOf(cmd[5]) - 1;
+                int quantity = parseInt(cmd[1]);
+                int from = parseInt(cmd[3]) - 1;
+                int to = parseInt(cmd[5]) - 1;
+
                 for (int q = 0; q < quantity; q++) {
-                    stacks.get(to).add(0, stacks.get(from).remove(0));
+                    stacks.get(to).add(0,
+                            stacks.get(from).remove(0));
                 }
             }
         }
@@ -30,9 +37,9 @@ class D05 {
         for (String puzzle : puzzles) {
             if (puzzle.startsWith("m")) {
                 String[] cmd = puzzle.split(" ");
-                int quantity = Integer.valueOf(cmd[1]);
-                int from = Integer.valueOf(cmd[3]) - 1;
-                int to = Integer.valueOf(cmd[5]) - 1;
+                int quantity = parseInt(cmd[1]);
+                int from = parseInt(cmd[3]) - 1;
+                int to = parseInt(cmd[5]) - 1;
 
                 List<String> c = new ArrayList<>(stacks.get(from).subList(0, quantity));
                 stacks.get(from).subList(0, quantity).clear();
@@ -50,7 +57,7 @@ class D05 {
 
         int size = puzzles.stream()
                 .filter(s -> s.startsWith(" 1"))
-                .mapToInt(s -> Integer.parseInt(s.substring(s.length() - 2, s.length()-1)))
+                .mapToInt(s -> parseInt(s.substring(s.length() - 2, s.length()-1)))
                 .findFirst()
                 .orElse(0);
         for (int j = 0; j < size; j++) {

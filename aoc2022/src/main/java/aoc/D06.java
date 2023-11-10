@@ -1,3 +1,5 @@
+package aoc;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,7 +11,7 @@ class D06 {
         int i = screen-1;
         while(res==0){
 
-            Set dic = new HashSet<>();
+            Set<String> dic = new HashSet<>();
             for(int j=0; j<screen; j++) {
                 dic.add(chars[i-j]);
             }

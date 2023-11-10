@@ -1,3 +1,6 @@
+package aoc;
+
+import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,26 +12,26 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 
-class D07Test {
+class D09Test {
 
-    D07 d;
+    D09 d;
 
     List<String> puzzleTest;
     List<String> puzzle;
 
     @BeforeEach
     void init() throws Exception {
-        d = new D07();
-        File testFile = new File(this.getClass().getClassLoader().getResource("D07Test.txt").toURI());
+        d = new D09();
+        File testFile = new File(this.getClass().getClassLoader().getResource("D09Test.txt").toURI());
         puzzleTest = Files.readAllLines(testFile.toPath());
-        File puzzleFile = new File(this.getClass().getClassLoader().getResource("D07.txt").toURI());
+        File puzzleFile = new File(this.getClass().getClassLoader().getResource("D09.txt").toURI());
         puzzle = Files.readAllLines(puzzleFile.toPath());
     }
 
     @Test
     void oneTest() throws Exception {
 
-        assertThat(d.one(puzzleTest), is(95437L));
+        MatcherAssert.assertThat(d.one(puzzleTest), is(13));
     }
 
     @Test
@@ -38,7 +41,10 @@ class D07Test {
 
     @Test
     void twoTest() throws Exception {
-        assertThat(d.two(puzzleTest), is(24933642L));
+//        assertThat(d.two(puzzleTest), is(1));
+        File testFile = new File(this.getClass().getClassLoader().getResource("D09Test2.txt").toURI());
+        List<String> puzzleTest2 = Files.readAllLines(testFile.toPath());
+        MatcherAssert.assertThat(d.two(puzzleTest2), is(36));
     }
 
     @Test

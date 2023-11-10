@@ -1,9 +1,13 @@
+package aoc;
+
+import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.nio.file.Files;
 import java.util.List;
+import java.util.Objects;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -19,9 +23,9 @@ class D01Test {
 
     @Test
     void mostCalories() throws Exception {
-        File df = new File(this.getClass().getClassLoader().getResource("D01Test.txt").toURI());
+        File df = new File(Objects.requireNonNull(this.getClass().getClassLoader().getResource("D01Test.txt")).toURI());
         List<String> cals = Files.readAllLines(df.toPath());
-        assertThat(d.mostCalories(cals), is(24000));
+        MatcherAssert.assertThat(d.mostCalories(cals), is(24000));
     }
 
     @Test
@@ -37,7 +41,7 @@ class D01Test {
     void threeMostCalories() throws Exception {
         File df = new File(this.getClass().getClassLoader().getResource("D01Test.txt").toURI());
         List<String> cals = Files.readAllLines(df.toPath());
-        assertThat(d.threeMostCalories(cals), is(45000));
+        MatcherAssert.assertThat(d.threeMostCalories(cals), is(45000));
     }
 
     @Test

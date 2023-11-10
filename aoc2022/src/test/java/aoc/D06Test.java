@@ -1,3 +1,6 @@
+package aoc;
+
+import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,11 +22,11 @@ class D06Test {
 
     @Test
     void oneTest() {
-        assertThat(d.one("mjqjpqmgbljsphdztnvjfqwrcgsmlb", 4), is(7));
-        assertThat(d.one("bvwbjplbgvbhsrlpgdmjqwftvncz", 4), is(5));
-        assertThat(d.one("nppdvjthqldpwncqszvftbrmjlhg", 4), is(6));
-        assertThat(d.one("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 4), is(10));
-        assertThat(d.one("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 4), is(11));
+        MatcherAssert.assertThat(d.one("mjqjpqmgbljsphdztnvjfqwrcgsmlb", 4), is(7));
+        MatcherAssert.assertThat(d.one("bvwbjplbgvbhsrlpgdmjqwftvncz", 4), is(5));
+        MatcherAssert.assertThat(d.one("nppdvjthqldpwncqszvftbrmjlhg", 4), is(6));
+        MatcherAssert.assertThat(d.one("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 4), is(10));
+        MatcherAssert.assertThat(d.one("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 4), is(11));
 
     }
 
@@ -35,11 +38,11 @@ class D06Test {
 
     @Test
     void twoTest() {
-        assertThat(d.one("mjqjpqmgbljsphdztnvjfqwrcgsmlb", 14), is(19));
-        assertThat(d.one("bvwbjplbgvbhsrlpgdmjqwftvncz", 14), is(23));
-        assertThat(d.one("nppdvjthqldpwncqszvftbrmjlhg", 14), is(23));
-        assertThat(d.one("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 14), is(29));
-        assertThat(d.one("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 14), is(26));
+        MatcherAssert.assertThat(d.one("mjqjpqmgbljsphdztnvjfqwrcgsmlb", 14), is(19));
+        MatcherAssert.assertThat(d.one("bvwbjplbgvbhsrlpgdmjqwftvncz", 14), is(23));
+        MatcherAssert.assertThat(d.one("nppdvjthqldpwncqszvftbrmjlhg", 14), is(23));
+        MatcherAssert.assertThat(d.one("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 14), is(29));
+        MatcherAssert.assertThat(d.one("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 14), is(26));
     }
 
     @Test

@@ -1,3 +1,5 @@
+package aoc;
+
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
@@ -42,6 +44,7 @@ class D02 {
                         return 3 + 3;
                 }
             }
+            default -> throw new IllegalStateException("Unexpected value: " + match[0]);
         }
         return null;
     }
@@ -84,6 +87,7 @@ class D02 {
                         return 1 + 6;
                 }
             }
+            default -> throw new IllegalStateException("Unexpected value: " + match[0]);
         }
         return null;
     }

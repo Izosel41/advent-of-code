@@ -1,3 +1,5 @@
+package aoc;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -12,7 +14,7 @@ class D08 {
         Set<String> visible = parseVisibles(side, matrix);
         // debug
         for (int y = 0; y < side; y++) {
-            System.out.println("");
+            System.out.println();
             for (int x = 0; x < side; x++) {
                 if (visible.contains(y + ";" + x))
                     System.out.print((char) 27 + "[33m" + matrix[y][x] + (char) 27 + "[0m");

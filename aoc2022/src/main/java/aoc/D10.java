@@ -1,3 +1,5 @@
+package aoc;
+
 import java.util.List;
 
 class D10 {
@@ -17,6 +19,7 @@ class D10 {
                     signal = signal + increaseCycle(x);
                     x = x + v;
                 }
+                default -> throw new IllegalStateException("Unexpected value: " + op);
             }
         }
         return signal;
@@ -46,6 +49,7 @@ class D10 {
                     sb.append(increaseCycle2(x));
                     x = x + v;
                 }
+                default -> throw new IllegalStateException("Unexpected value: " + op);
             }
         }
 

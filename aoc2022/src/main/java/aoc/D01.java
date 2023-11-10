@@ -1,22 +1,22 @@
+package aoc;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 class D01 {
 
     public int mostCalories(List<String> cals) {
         List<List<Integer>> elves = build(cals);
 
-        return elves.stream().mapToInt(e -> (Integer) e.stream().mapToInt(Integer::intValue).sum()).max()
-                .getAsInt();
+        return elves.stream().mapToInt(e -> (Integer) e.stream().mapToInt(Integer::intValue).sum()).max().orElseThrow();
     }
 
     private List<List<Integer>> build(List<String> cals) {
         List<List<Integer>> elves = new ArrayList<>();
         List<Integer> elf = new ArrayList<>();
         for (String cal : cals) {
-            if (cal.equals("")) {
+            if (cal.isEmpty()) {
                 elves.add(elf);
                 elf = new ArrayList<>();
             } else

@@ -1,3 +1,5 @@
+package aoc;
+
 import lombok.Data;
 
 import java.util.Comparator;
@@ -11,9 +13,9 @@ class D11 {
         for (int round = 0; round < r; round++) {
             System.out.println("** Round" + round);
             for (Monkey m : monkeys) {
-                while (m.getItems().size() > 0) {
+                while (!m.getItems().isEmpty()) {
                     m.setInspect(m.getInspect() + 1);
-//                    System.out.println("Monkey " + monkey + " inspects " + m.getInspect());
+//                    System.out.println("aoc.Monkey " + monkey + " inspects " + m.getInspect());
                     long item = m.getItems().removeFirst();
 //                    System.out.println("  " + item);
                     item = m.getOp().op(item);
@@ -36,16 +38,16 @@ class D11 {
 //            if (round % 1000 == 0 || round == 20 || round == 1) {
 //                System.out.println("** Round" + round);
 //                for (int monkey = 0; monkey < monkeys.size(); monkey++) {
-//                    System.out.println("Monkey " + monkey +
+//                    System.out.println("aoc.Monkey " + monkey +
 //                            " inspects " + monkeys.get(monkey).getInspect());
 //                }
 //            }
             for (Monkey value : monkeys) {
 
-                while (value.getItems().size() > 0) {
+                while (!value.getItems().isEmpty()) {
                     Monkey m = value;
                     m.setInspect(m.getInspect() + 1);
-//                    System.out.println("Monkey " + monkey + " inspects " + m.getInspect());
+//                    System.out.println("aoc.Monkey " + monkey + " inspects " + m.getInspect());
                     long item = m.getItems().removeFirst();
                     item = m.getOp().op(item);
                     // item = (int) Math.ceil(item /3);
@@ -62,26 +64,27 @@ class D11 {
                 .limit(2).mapToLong(Long::valueOf).reduce((a, b) -> a * b).orElse(0);
 
     }
-}
 
-interface Operation {
-    long op(long old);
-}
+    @Data
+    static
+    class Monkey {
+        private int inspect = 0;
+        private LinkedList<Long> items = null;
 
-@Data
-class Monkey {
-    private int inspect = 0;
-    private LinkedList<Long> items = null;
+        private Operation op = null;
 
-    private Operation op = null;
+        private Operation test = null;
 
-    private Operation test = null;
+        @Override
+        public String toString() {
+            return "aoc.D11.Monkey{" +
+                    "inspect=" + inspect +
+                    ", items=" + items +
+                    '}';
+        }
+    }
 
-    @Override
-    public String toString() {
-        return "Monkey{" +
-                "inspect=" + inspect +
-                ", items=" + items +
-                '}';
+    static interface Operation {
+        long op(long old);
     }
 }

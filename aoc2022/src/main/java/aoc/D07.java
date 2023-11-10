@@ -1,3 +1,5 @@
+package aoc;
+
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -66,9 +68,9 @@ class D07 {
 
     private List<F> size(F f) {
         List<F> folders = new ArrayList<>();
-        if (f.getChildren().size() > 0) {
+        if (!f.getChildren().isEmpty()) {
             for (F child : f.getChildren().values()) {
-                if (child.getChildren().size() > 0)
+                if (!child.getChildren().isEmpty())
                     folders.addAll(size(child));
             }
             folders.add(f);
@@ -77,17 +79,17 @@ class D07 {
     }
 
     @Data
+    static
     class F {
         private long size;
         private String name;
-        private Map<String, F> children;
+        private Map<String, F> children = new HashMap<>();
         private F father;
 
         public F(long size, String name, F father) {
             this.size = size;
             this.name = name;
             this.father = father;
-            this.children = new HashMap();
         }
 
         @Override

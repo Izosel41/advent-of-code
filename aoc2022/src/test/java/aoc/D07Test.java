@@ -1,3 +1,6 @@
+package aoc;
+
+import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,25 +12,26 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 
-class D13Test {
+class D07Test {
 
-    D13 d;
+    D07 d;
 
     List<String> puzzleTest;
     List<String> puzzle;
 
     @BeforeEach
     void init() throws Exception {
-        d = new D13();
-        File testFile = new File(this.getClass().getClassLoader().getResource("D13Test.txt").toURI());
+        d = new D07();
+        File testFile = new File(this.getClass().getClassLoader().getResource("D07Test.txt").toURI());
         puzzleTest = Files.readAllLines(testFile.toPath());
-        File puzzleFile = new File(this.getClass().getClassLoader().getResource("D13.txt").toURI());
+        File puzzleFile = new File(this.getClass().getClassLoader().getResource("D07.txt").toURI());
         puzzle = Files.readAllLines(puzzleFile.toPath());
     }
 
     @Test
     void oneTest() throws Exception {
-        assertThat(d.one(puzzleTest), is(1));
+
+        MatcherAssert.assertThat(d.one(puzzleTest), is(95437L));
     }
 
     @Test
@@ -37,7 +41,7 @@ class D13Test {
 
     @Test
     void twoTest() throws Exception {
-        assertThat(d.two(puzzleTest), is(29));
+        MatcherAssert.assertThat(d.two(puzzleTest), is(24933642L));
     }
 
     @Test
