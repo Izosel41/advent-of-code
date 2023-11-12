@@ -2,11 +2,7 @@ package aoc;
 
 import org.json.JSONArray;
 
-import java.util.IdentityHashMap;
 import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 class D13 {
 
@@ -58,7 +54,7 @@ class D13 {
         //divider packets
         puzzle.add("[[2]]");
         puzzle.add("[[6]]");
-        List list = puzzle
+        List<String> list = puzzle
                 .stream()
                 .filter(s -> !s.isEmpty())
                 .map(JSONArray::new)

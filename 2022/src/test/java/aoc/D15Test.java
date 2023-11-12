@@ -1,6 +1,5 @@
 package aoc;
 
-import org.json.JSONArray;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,38 +10,30 @@ import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-class D14Test {
-    D14 d;
+class D15Test {
+    D15 d;
     List<String> puzzleTest;
     List<String> puzzle;
 
     @BeforeEach
     void init() throws Exception {
-        d = new D14();
-        File testFile = new File(this.getClass().getClassLoader().getResource("D14Test.txt").toURI());
+        d = new D15();
+        File testFile = new File(this.getClass().getClassLoader().getResource("D15Test.txt").toURI());
         puzzleTest = Files.readAllLines(testFile.toPath());
-        File puzzleFile = new File(this.getClass().getClassLoader().getResource("D14.txt").toURI());
+        File puzzleFile = new File(this.getClass().getClassLoader().getResource("D15.txt").toURI());
         puzzle = Files.readAllLines(puzzleFile.toPath());
     }
 
     @Test
-    void createMapAndDraw() throws Exception{
-        d = new D14();
-        File testFile = new File(this.getClass().getClassLoader().getResource("D14Test.txt").toURI());
+    void createMapAndDraw() throws Exception {
+        File testFile = new File(this.getClass().getClassLoader().getResource("D15Test.txt").toURI());
         puzzleTest = Files.readAllLines(testFile.toPath());
-        char[][] map = d.createMap(puzzleTest, 505);
-        //draw line
-        for (int x = 0; x < 505; x++) {
-            for (int y = 0; y < 505; y++) {
-                System.out.print(map[x][y]);
-            }
-            System.out.println();
-        }
+
     }
 
     @Test
     void oneTest() throws Exception {
-        assertThat(d.one(puzzleTest), is(13));
+        assertThat(d.one(puzzleTest), is(24));
     }
 
     @Test
@@ -52,7 +43,7 @@ class D14Test {
 
     @Test
     void twoTest() throws Exception {
-        assertThat(d.two(puzzleTest), is(140));
+        assertThat(d.two(puzzleTest), is(93));
     }
 
     @Test

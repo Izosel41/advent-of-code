@@ -36,31 +36,31 @@ class D13Test {
     @Test
     void isRightOrder() {
         assertThat(d.isRightOrder(new JSONArray("[1]"), new JSONArray("[2]"), false, false), is(1));
-        assertThat(d.isRightOrder(new JSONArray("[1]"), new JSONArray("[1]"), false, false), is(1));
+        assertThat(d.isRightOrder(new JSONArray("[1]"), new JSONArray("[1]"), false, false), is(0));
         assertThat(d.isRightOrder(new JSONArray("[2]"), new JSONArray("[1]"), false, false), is(-1));
 
         assertThat(d.isRightOrder(new JSONArray("[[1]]"), new JSONArray("[2]"), false, false), is(1));
-        assertThat(d.isRightOrder(new JSONArray("[[1]]"), new JSONArray("[1]"), false, false), is(1));
+        assertThat(d.isRightOrder(new JSONArray("[[1]]"), new JSONArray("[1]"), false, false), is(0));
         assertThat(d.isRightOrder(new JSONArray("[[2]]"), new JSONArray("[1]"), false, false), is(-1));
 
         assertThat(d.isRightOrder(new JSONArray("[1]"), new JSONArray("[[2]]"), false, false), is(1));
-        assertThat(d.isRightOrder(new JSONArray("[1]"), new JSONArray("[[1]]"), false, false), is(1));
+        assertThat(d.isRightOrder(new JSONArray("[1]"), new JSONArray("[[1]]"), false, false), is(0));
         assertThat(d.isRightOrder(new JSONArray("[2]"), new JSONArray("[[1]]"), false, false), is(-1));
 
         assertThat(d.isRightOrder(new JSONArray("[[]]"), new JSONArray("[1]"), false, false), is(1));
-        assertThat(d.isRightOrder(new JSONArray("[[]]"), new JSONArray("[]"), false, false), is(-1));
+        assertThat(d.isRightOrder(new JSONArray("[[]]"), new JSONArray("[]"), false, false), is(0));
         assertThat(d.isRightOrder(new JSONArray("[[1]]"), new JSONArray("[]"), false, false), is(-1));
 
         assertThat(d.isRightOrder(new JSONArray("[[1,1]]"), new JSONArray("[1,2]"), false, false), is(-1));
-        assertThat(d.isRightOrder(new JSONArray("[[1,2]]"), new JSONArray("[1,2]"), false, false), is(-1));
+        assertThat(d.isRightOrder(new JSONArray("[[1,2]]"), new JSONArray("[1,2]"), false, false), is(0));
         assertThat(d.isRightOrder(new JSONArray("[[2,1]]"), new JSONArray("[1,1]"), false, false), is(-1));
 
         assertThat(d.isRightOrder(new JSONArray("[1,[1]]"), new JSONArray("[1,[2]]"), false, false), is(1));
-        assertThat(d.isRightOrder(new JSONArray("[1,[2]]"), new JSONArray("[1,[2]]"), false, false), is(1));
+        assertThat(d.isRightOrder(new JSONArray("[1,[2]]"), new JSONArray("[1,[2]]"), false, false), is(0));
         assertThat(d.isRightOrder(new JSONArray("[2,[1]]"), new JSONArray("[1,[1]]"), false, false), is(-1));
 
         assertThat(d.isRightOrder(new JSONArray("[1,[1,2]]"), new JSONArray("[1,1,2]"), false, false), is(-1));
-        assertThat(d.isRightOrder(new JSONArray("[1,[2]]"), new JSONArray("[1,[2]]"), false, false), is(1));
+        assertThat(d.isRightOrder(new JSONArray("[1,[2]]"), new JSONArray("[1,[2]]"), false, false), is(0));
         assertThat(d.isRightOrder(new JSONArray("[2,[1]]"), new JSONArray("[1,[1]]"), false, false), is(-1));
 
         assertThat(d.isRightOrder(new JSONArray("[[],[1,2],1]"), new JSONArray("[1,[1,2],3]"), false, false), is(1));
