@@ -126,9 +126,7 @@ class D12 {
 
     private static void debug(Node[][] matrix, Set<Node> closedList, int rowLength, int lineLength) {
         //debug
-        List<String> coord = closedList.stream().map(n -> {
-            return Integer.toString(n.x) + n.y;
-        }).toList();
+        List<String> coord = closedList.stream().map(n -> Integer.toString(n.x) + n.y).toList();
 
         for (int x = 0; x < rowLength; x++) {
             for (int y = 0; y < lineLength; y++) {

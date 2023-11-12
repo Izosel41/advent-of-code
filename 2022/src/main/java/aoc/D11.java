@@ -35,22 +35,16 @@ class D11 {
 
     public Long two(List<Monkey> monkeys, int r, int gcd) {
         for (int round = 0; round < r; round++) {
-//            if (round % 1000 == 0 || round == 20 || round == 1) {
-//                System.out.println("** Round" + round);
-//                for (int monkey = 0; monkey < monkeys.size(); monkey++) {
-//                    System.out.println("aoc.Monkey " + monkey +
-//                            " inspects " + monkeys.get(monkey).getInspect());
-//                }
-//            }
+
             for (Monkey value : monkeys) {
 
                 while (!value.getItems().isEmpty()) {
                     Monkey m = value;
                     m.setInspect(m.getInspect() + 1);
-//                    System.out.println("aoc.Monkey " + monkey + " inspects " + m.getInspect());
+
                     long item = m.getItems().removeFirst();
                     item = m.getOp().op(item);
-                    // item = (int) Math.ceil(item /3);
+
                     item = item % gcd;
                     int next = (int) m.getTest().op(item);
                     monkeys.get(next).getItems().addLast(item);

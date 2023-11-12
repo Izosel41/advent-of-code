@@ -26,7 +26,6 @@ class D09 {
                 pull(head, tail, true);
             }
         }
-        // debugPos();
         // +1 for 0;0
         return pos.size() + 1;
     }
@@ -212,9 +211,7 @@ class D09 {
                 Knob tmp = pull(rope.get(rope.size() - 2), rope.get(rope.size() - 1), true);
                 rope.set(rope.size() - 1, tmp);
             }
-
         }
-        //debugPos();
 
         // +1 for 0;0
         return pos.size() + 1;

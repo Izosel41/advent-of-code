@@ -91,26 +91,4 @@ class D02 {
         }
         return null;
     }
-//    private List<List<Integer>> build(List<String> cals) {
-//        List<List<Integer>> elves = new ArrayList<>();
-//        List<Integer> elf = new ArrayList<>();
-//        for (int i = 0; i < cals.size(); i++) {
-//            if (cals.get(i).equals("")) {
-//                elves.add(elf);
-//                elf = new ArrayList<>();
-//            } else
-//                elf.add(Integer.parseInt(cals.get(i)));
-//        }
-//        //last one
-//        elves.add(elf);
-//        return elves;
-//    }
-//
-//    public int threeMostCalories(List<String> cals) {
-//        List<List<Integer>> elves = build(cals);
-//
-//        return elves.stream().mapToInt(e -> e.stream().collect(Collectors.summingInt(Integer::intValue))).boxed()
-//                .sorted(Comparator.reverseOrder()).limit(3).collect(Collectors.summingInt(Integer::intValue));
-//    }
-
 }

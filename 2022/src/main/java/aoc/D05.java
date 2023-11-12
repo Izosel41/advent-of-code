@@ -1,11 +1,10 @@
 package aoc;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.lang.Integer.*;
+import static java.lang.Integer.parseInt;
 
 class D05 {
 
@@ -57,7 +56,7 @@ class D05 {
 
         int size = puzzles.stream()
                 .filter(s -> s.startsWith(" 1"))
-                .mapToInt(s -> parseInt(s.substring(s.length() - 2, s.length()-1)))
+                .mapToInt(s -> parseInt(s.substring(s.length() - 2, s.length() - 1)))
                 .findFirst()
                 .orElse(0);
         for (int j = 0; j < size; j++) {
