@@ -26,7 +26,7 @@ class D11Test {
         initPuzzleTest();
         puzzle = new ArrayList<>();
         D11.Monkey m0 = new D11.Monkey();
-        m0.setItems(new LinkedList());
+        m0.setItems(new LinkedList<>());
         m0.getItems().add(83L);
         m0.getItems().add(88L);
         m0.getItems().add(96L);
@@ -40,48 +40,48 @@ class D11Test {
         puzzle.add(m0);
 
         D11.Monkey m1 = new D11.Monkey();
-        m1.setItems(new LinkedList());
+        m1.setItems(new LinkedList<>());
         m1.getItems().add(59L);
-        m1.getItems().add(63l);
-        m1.getItems().add(98l);
-        m1.getItems().add(85l);
-        m1.getItems().add(68l);
-        m1.getItems().add(72l);
+        m1.getItems().add(63L);
+        m1.getItems().add(98L);
+        m1.getItems().add(85L);
+        m1.getItems().add(68L);
+        m1.getItems().add(72L);
 
         m1.setOp((x) -> x * 11);
         m1.setTest((x) -> x % 5 == 0 ? 4 : 0);
         puzzle.add(m1);
 
         D11.Monkey m2 = new D11.Monkey();
-        m2.setItems(new LinkedList());
-        m2.getItems().add(90l);
-        m2.getItems().add(79l);
-        m2.getItems().add(97l);
-        m2.getItems().add(52l);
-        m2.getItems().add(90l);
-        m2.getItems().add(94l);
-        m2.getItems().add(71l);
-        m2.getItems().add(70l);
+        m2.setItems(new LinkedList<>());
+        m2.getItems().add(90L);
+        m2.getItems().add(79L);
+        m2.getItems().add(97L);
+        m2.getItems().add(52L);
+        m2.getItems().add(90L);
+        m2.getItems().add(94L);
+        m2.getItems().add(71L);
+        m2.getItems().add(70L);
         m2.setOp((x) -> x + 2);
         m2.setTest((x) -> x % 19 == 0 ? 5 : 6);
         puzzle.add(m2);
 
         D11.Monkey m3 = new D11.Monkey();
-        m3.setItems(new LinkedList());
-        m3.getItems().add(97l);
-        m3.getItems().add(55l);
-        m3.getItems().add(62l);
+        m3.setItems(new LinkedList<>());
+        m3.getItems().add(97L);
+        m3.getItems().add(55L);
+        m3.getItems().add(62L);
 
         m3.setOp((x) -> x + 5);
         m3.setTest((x) -> x % 13 == 0 ? 2 : 6);
         puzzle.add(m3);
 
         D11.Monkey m4 = new D11.Monkey();
-        m4.setItems(new LinkedList());
-        m4.getItems().add(74l);
-        m4.getItems().add(54l);
-        m4.getItems().add(94l);
-        m4.getItems().add(76l);
+        m4.setItems(new LinkedList<>());
+        m4.getItems().add(74L);
+        m4.getItems().add(54L);
+        m4.getItems().add(94L);
+        m4.getItems().add(76L);
 
         m4.setOp((x) -> x * x);
         m4.setTest((x) -> x % 7 == 0 ? 0 : 3);
@@ -96,20 +96,20 @@ class D11Test {
         puzzle.add(m5);
 
         D11.Monkey m6 = new D11.Monkey();
-        m6.setItems(new LinkedList());
-        m6.getItems().add(66l);
-        m6.getItems().add(63l);
+        m6.setItems(new LinkedList<>());
+        m6.getItems().add(66L);
+        m6.getItems().add(63L);
         m6.setOp((x) -> x + 6);
         m6.setTest((x) -> x % 2 == 0 ? 7 : 5);
         puzzle.add(m6);
 
         D11.Monkey m7 = new D11.Monkey();
-        m7.setItems(new LinkedList());
-        m7.getItems().add(56l);
-        m7.getItems().add(56l);
-        m7.getItems().add(90l);
-        m7.getItems().add(96l);
-        m7.getItems().add(68l);
+        m7.setItems(new LinkedList<>());
+        m7.getItems().add(56L);
+        m7.getItems().add(56L);
+        m7.getItems().add(90L);
+        m7.getItems().add(96L);
+        m7.getItems().add(68L);
 
         m7.setOp((x) -> x + 7);
         m7.setTest((x) -> x % 3 == 0 ? 4 : 1);
@@ -127,7 +127,7 @@ class D11Test {
         puzzleTest.add(m0);
 
         D11.Monkey m1 = new D11.Monkey();
-        m1.setItems(new LinkedList());
+        m1.setItems(new LinkedList<>());
         m1.getItems().add(54L);
         m1.getItems().add(65L);
         m1.getItems().add(75L);
@@ -137,7 +137,7 @@ class D11Test {
         puzzleTest.add(m1);
 
         D11.Monkey m2 = new D11.Monkey();
-        m2.setItems(new LinkedList());
+        m2.setItems(new LinkedList<>());
         m2.getItems().add(79L);
         m2.getItems().add(60L);
         m2.getItems().add(97L);
@@ -146,7 +146,7 @@ class D11Test {
         puzzleTest.add(m2);
 
         D11.Monkey m3 = new D11.Monkey();
-        m3.setItems(new LinkedList());
+        m3.setItems(new LinkedList<>());
         m3.getItems().add(74L);
         m3.setOp((x) -> x + 3);
         m3.setTest((x) -> x % 17 == 0 ? 0 : 1);
@@ -155,14 +155,11 @@ class D11Test {
 
     @Test
     void oneTest() throws Exception {
-
         MatcherAssert.assertThat(d.one(puzzleTest, 20), is(10605));
     }
 
     @Test
     void one() throws Exception {
-
-
         System.out.println(d.one(puzzle, 20));
     }
 

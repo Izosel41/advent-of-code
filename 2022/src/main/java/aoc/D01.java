@@ -8,8 +8,7 @@ class D01 {
 
     public int mostCalories(List<String> cals) {
         List<List<Integer>> elves = build(cals);
-
-        return elves.stream().mapToInt(e -> (Integer) e.stream().mapToInt(Integer::intValue).sum()).max().orElseThrow();
+        return elves.stream().mapToInt(e -> e.stream().mapToInt(Integer::intValue).sum()).max().orElseThrow();
     }
 
     private List<List<Integer>> build(List<String> cals) {

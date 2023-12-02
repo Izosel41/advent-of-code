@@ -1,2 +1,4 @@
-/aoc2022/.idea/
+.idea/
 *.iml
+*.pb
+/*/target
