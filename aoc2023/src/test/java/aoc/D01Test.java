@@ -1,3 +1,5 @@
+package aoc;
+
 import aoc.D01;
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.BeforeEach;

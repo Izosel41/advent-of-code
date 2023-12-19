@@ -15,8 +15,8 @@ class D02 {
         String pass = rule[1];
 
         String[] p = policy.split(" ");
-        long min = Long.valueOf(p[0].split("-")[0]);
-        long max = Long.valueOf(p[0].split("-")[1]);
+        long min = Long.parseLong(p[0].split("-")[0]);
+        long max = Long.parseLong(p[0].split("-")[1]);
 
         char letter = p[1].charAt(0);
 
