@@ -3,6 +3,7 @@ package aoc;
 import lombok.Data;
 
 import java.util.*;
+import java.util.concurrent.*;
 import java.util.stream.Stream;
 
 public class D05 {
@@ -80,7 +81,7 @@ public class D05 {
                 .get();
     }
 
-    private static Rule buildRule(Stream<String> puzzleTest) {
+    private Rule buildRule(Stream<String> puzzleTest) {
         List<Long> ruleElements =
                 puzzleTest.mapToLong(Long::parseLong).boxed().toList();
         Rule r = new Rule(ruleElements.get(0), ruleElements.get(1), ruleElements.get(2));
@@ -96,7 +97,7 @@ public class D05 {
     }
 
 
-    public Long two(List<String> puzzleTest) {
+    public Long two(List<String> puzzleTest) throws InterruptedException {
         List<Rule> seedToSoilRules = new ArrayList<>();
         List<Rule> soilToFertilizer = new ArrayList<>();
         List<Rule> fertilizerToWater = new ArrayList<>();
@@ -158,26 +159,45 @@ public class D05 {
             i++;
         }
 
-        List<Long> seeds = new ArrayList<>();
+        //Split by threads
+        List<Long> res = new ArrayList<>();
 
-        for (int j = 0; j < seedRanges.size(); j = j + 2) {
-            Long start = seedRanges.get(j);
-            Long range = seedRanges.get(j + 1);
-            for (int k = 0; k < range; k++) {
-                seeds.add(start + k);
+        try (ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor()){
+        List<CalcTask> tasks = new ArrayList<>();
+            CalcTask t = new CalcTask();
+            t.seedToSoilRules = seedToSoilRules;
+            t.soilToFertilizer = soilToFertilizer;
+            t.fertilizerToWater = fertilizerToWater;
+            t.waterToLight = waterToLight;
+            t.lightToTemperature = lightToTemperature;
+            t.temperatureToHumidity = temperatureToHumidity;
+            t.humidityToLocation = humidityToLocation;
+
+            for (int task = 0; task < 1_000 / 2; task++) {
+
+                for (int j = 0; j < seedRanges.size(); j = j + 2) {
+                    List<Long> seeds = new ArrayList<>();
+                    Long start = seedRanges.get(j);
+                    Long range = seedRanges.get(j + 1);
+
+                    for (int k = 0; k < range; k++) {
+                        seeds.add(start + k);
+                    }
+                    t.seeds = seeds;
+                }
+                tasks.add(t);
             }
+
+            List<Future<Long>> taskFutureList = executor.invokeAll(tasks);
+
+            for (Future<Long> future : taskFutureList) {
+                res.add(future.get());
+            }
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
         }
 
-        return seeds.stream()
-                .map(seed -> applyRules(seedToSoilRules, seed))
-                .map(soil -> applyRules(soilToFertilizer, soil))
-                .map(fertilizer -> applyRules(fertilizerToWater, fertilizer))
-                .map(water -> applyRules(waterToLight, water))
-                .map(light -> applyRules(lightToTemperature, light))
-                .map(temp -> applyRules(temperatureToHumidity, temp))
-                .map(hum -> applyRules(humidityToLocation, hum))
-                .min(Comparator.comparing(Long::valueOf))
-                .get();
+        return res.stream().min(Comparator.comparing(Long::valueOf)).get();
     }
 
     public Long seedToSoil(String ruleDef, Long seed) {
@@ -209,5 +229,41 @@ class Rule {
     boolean isAppliable(Long seed) {
         return sourceStart <= seed
                 && seed < sourceStart + range;
+    }
+}
+
+class CalcTask implements Callable<Long> {
+    List<Long> seeds;
+    List<Rule> seedToSoilRules;
+    List<Rule> soilToFertilizer;
+    List<Rule> fertilizerToWater;
+    List<Rule> waterToLight;
+    List<Rule> lightToTemperature;
+    List<Rule> temperatureToHumidity;
+    List<Rule> humidityToLocation;
+
+    private Long applyRules(List<Rule> rules, Long seed) {
+        Optional<Rule> ruleToApply = rules.stream().filter(r -> r.isAppliable(seed)).findFirst();
+        if (ruleToApply.isEmpty())
+            return seed;
+        else
+            return ruleToApply.get().apply(seed);
+    }
+
+    public Long call() {
+
+        Long res = seeds.stream()
+                .map(seed -> applyRules(seedToSoilRules, seed))
+                .map(soil -> applyRules(soilToFertilizer, soil))
+                .map(fertilizer -> applyRules(fertilizerToWater, fertilizer))
+                .map(water -> applyRules(waterToLight, water))
+                .map(light -> applyRules(lightToTemperature, light))
+                .map(temp -> applyRules(temperatureToHumidity, temp))
+                .map(hum -> applyRules(humidityToLocation, hum))
+                .peek(System.out::println)
+                .min(Comparator.comparing(Long::valueOf))
+                .get();
+        System.out.println(res);
+        return res;
     }
 }

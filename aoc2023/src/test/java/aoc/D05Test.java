@@ -62,7 +62,7 @@ class D05Test {
 
     @Test
     void twoTest() throws Exception {
-        assertThat(d.two(puzzleTest), is(46d));
+        assertThat(d.two(puzzleTest), is(46L));
     }
 
     @Test

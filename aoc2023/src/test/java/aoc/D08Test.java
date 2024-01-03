@@ -10,31 +10,29 @@ import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-class D06Test {
-    D06 d;
+class D08Test {
+    D08 d;
     List<String> puzzleTest;
     List<String> puzzle;
 
     @BeforeEach
     void init() throws Exception {
-        d = new D06();
-        File testFile = new File(this.getClass().getClassLoader().getResource("D06Test.txt").toURI());
+        d = new D08();
+        File testFile = new File(this.getClass().getClassLoader().getResource("D08Test.txt").toURI());
         puzzleTest = Files.readAllLines(testFile.toPath());
-        File puzzleFile = new File(this.getClass().getClassLoader().getResource("D06.txt").toURI());
+        File puzzleFile = new File(this.getClass().getClassLoader().getResource("D08.txt").toURI());
         puzzle = Files.readAllLines(puzzleFile.toPath());
     }
 
     @Test
-
-    void countWays() {
-        assertThat(d.countWays(7,9), is(4L));
-        assertThat(d.countWays(15,40), is(8L));
-        assertThat(d.countWays(30,200), is(9L));
+    void oneTest() throws Exception {
+        assertThat(d.one(puzzleTest), is(2));
     }
 
     @Test
-    void oneTest() throws Exception {
-        assertThat(d.one(puzzleTest), is(288L));
+    void oneTest2() throws Exception {
+        File testFile2 = new File(this.getClass().getClassLoader().getResource("D08Test2.txt").toURI());
+        assertThat(d.one(Files.readAllLines(testFile2.toPath())), is(6L));
     }
 
     @Test
@@ -44,7 +42,8 @@ class D06Test {
 
     @Test
     void twoTest() throws Exception {
-        assertThat(d.two(puzzleTest), is(71503L));
+        File testFile3 = new File(this.getClass().getClassLoader().getResource("D08Test3.txt").toURI());
+        assertThat(d.two(Files.readAllLines(testFile3.toPath())), is(6));
     }
 
     @Test
