@@ -35,28 +35,9 @@ public class D10 {
 
         // follow loop
         int distance = 0;
-        Point nextPoint = null;
-        while (distance > 0 && !start.equals(start)) {
-            nextPoint = findNext(points, nextPoint);
-            distance++;
-        }
 
         return distance;
 
-    }
-
-    private Point findNext(List<Point> points, Point nextPoint) {
-        Step base = Arrays.stream(Step.values()).filter(step -> step.getValue() == grid[x][y]).findAny().orElseThrow();
-        List<Character> nextSteps = new ArrayList<>();
-
-        for (int i = -1; i <= 1; i++) {
-            for (int j = -1; j <= 1; j++) {
-                if (i != 0 || j != 0) {
-                    nextSteps.add(grid[x + i][y + j]);
-                }
-            }
-        }
-        nextSteps.stream().filter(character -> base.next().contains(character)).findAny().orElseThrow();
     }
 
     public int two(List<String> puzzleTest) {
